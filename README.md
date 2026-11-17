@@ -9,7 +9,7 @@ brew upgrade --cask clipnest     # 升级
 brew uninstall --zap --cask clipnest   # 连数据一起删
 ```
 
-国内网络：
+国内网络用 Gitee 镜像（cask 里的下载地址也换成 Gitee 附件，拉包也走 Gitee）：
 
 ```bash
 brew tap null_593_5354/clipnest https://gitee.com/null_593_5354/homebrew-clipnest
