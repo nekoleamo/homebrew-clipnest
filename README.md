@@ -4,6 +4,7 @@ clipnest 的 Homebrew tap。
 
 ```bash
 brew tap nekoleamo/clipnest
+brew trust --tap nekoleamo/clipnest   # 新版 Homebrew 要求显式信任第三方 tap
 brew install --cask clipnest
 brew upgrade --cask clipnest     # 升级
 brew uninstall --zap --cask clipnest   # 连数据一起删

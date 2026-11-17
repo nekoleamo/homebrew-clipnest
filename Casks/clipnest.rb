@@ -13,9 +13,8 @@ cask "clipnest" do
   # 下载来的 zip 带 com.apple.quarantine 属性，Gatekeeper 会把未公证的 app 拦下来。
   # cask 装完后删掉这个属性即可正常启动；官方 homebrew-cask 要求已公证，
   # 所以本 cask 只能放在自建 tap 里。
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/clipnest.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/clipnest.app"]
   end
 
   # brew uninstall --zap：数据与可选的登录项一起清掉
