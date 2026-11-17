@@ -1,6 +1,6 @@
 cask "clipnest" do
-  version "1.0.0"
-  sha256 "24cdf087a937b9772d518ff9585ef8efd163d1a8d0cbb885b3f693c4e8fd1fe7"
+  version "1.0.1"
+  sha256 "e97e997f4abe87bde9da33374bfc6de799249c62b072ca5bd9ee9dad8622ea65"
 
   url "https://github.com/nekoleamo/clipnest/releases/download/v#{version}/clipnest-#{version}-macos.zip"
   name "clipnest"
@@ -9,10 +9,12 @@ cask "clipnest" do
 
   app "clipnest.app"
 
-  # 本项目没有购买 Apple Developer Program，因此没有公证（notarization）。
-  # 下载来的 zip 带 com.apple.quarantine 属性，Gatekeeper 会把未公证的 app 拦下来。
-  # cask 装完后删掉这个属性即可正常启动；官方 homebrew-cask 要求已公证，
-  # 所以本 cask 只能放在自建 tap 里。
+  # 本项目没有购买 Apple Developer Program，因此没有公证（notarization），官方 homebrew-cask
+  # 不收，只能放自建 tap。brew 自己用 curl 下载不带 com.apple.quarantine，
+  # 这里只是兜底（万一缓存里的包带着），删掉才能正常启动。
+  #
+  # 用 postflight_steps 而不是已废弃的 postflight：新版 Homebrew 里后者会报警告，
+  # 而 steps DSL 里没有 appdir 方法，路径要用 {{appdir}} 模板 token。
   postflight_steps do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/clipnest.app"]
   end
