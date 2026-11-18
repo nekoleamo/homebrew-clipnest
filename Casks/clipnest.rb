@@ -1,6 +1,6 @@
 cask "clipnest" do
-  version "1.3.2"
-  sha256 "1d71cd3243987f9e5e5cb57a6a96d10e4445e7dfbe1508970936f0d229690c20"
+  version "1.3.3"
+  sha256 "ec83de1e73f0dc30d5fc34213903817f5de7bdf1e730cf12ed96c0609785bb15"
 
   url "https://github.com/nekoleamo/clipnest/releases/download/v#{version}/clipnest-#{version}-macos.zip"
   name "clipnest"
